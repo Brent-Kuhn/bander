@@ -4,15 +4,57 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#4C4C4C"
     tools:context=".MainActivity">
+    <android.support.v7.widget.LinearLayoutCompat
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
 
-    <TextView
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="fill_parent"
+            android:layout_height="200dp"
+            app:srcCompat="@drawable/bander_logo"
+            android:contentDescription="@string/app_name"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/u_name"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"/>
+
+        <EditText
+            android:id="@+id/u_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:contentDescription="@string/u_name"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/p_word"
+            android:textColor="#FFFFFF"
+            android:textSize="25sp"/>
+
+        <EditText
+            android:id="@+id/p_word"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPassword" />
+
+        <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="@string/create"
+        android:textColor="#E6007E"
+        android:textSize="15sp"/>
+
+    </android.support.v7.widget.LinearLayoutCompat>
 
 </android.support.constraint.ConstraintLayout>
