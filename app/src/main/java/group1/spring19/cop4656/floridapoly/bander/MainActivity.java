@@ -1,20 +1,62 @@
 package group1.spring19.cop4656.floridapoly.bander;
 
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.EditText;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Filter;
 
 public class MainActivity extends AppCompatActivity {
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final EditText userName = findViewById(R.id.u_name);
-        userName.setHint(getResources().getString(R.string.u_name));
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
+        bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-        final EditText pWord = findViewById(R.id.p_word);
-        pWord.setHint(getResources().getString(R.string.p_word));
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                new YourProfileFragment()).commit();
+
+
+
+    }
+
+    private BottomNavigationView.OnNavigationItemSelectedListener navListener =
+            new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+            Fragment selectedFragment = null;
+
+            switch(menuItem.getItemId()){
+                case R.id.nav_yourProfile:
+                     selectedFragment = new YourProfileFragment();
+                     break;
+                case R.id.nav_searchProfiles:
+                    selectedFragment = new SearchingFragment();
+                    break;
+                case R.id.nav_matches:
+                    selectedFragment = new MatchesFragment();
+                    break;
+            }
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    selectedFragment).commit();
+            return true;
+        }
+    };
+
+    public void goToEditFilters() {
+        Intent intent = new Intent(this, FiltersActivity.class);
+
+        startActivity(intent);
     }
 }
