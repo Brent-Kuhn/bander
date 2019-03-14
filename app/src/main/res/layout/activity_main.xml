@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#4C4C4C"
+    android:background="@color/bg"
     tools:context=".MainActivity">
     <android.support.v7.widget.LinearLayoutCompat
         android:layout_width="match_parent"
@@ -23,7 +23,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/u_name"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/white"
             android:textSize="25sp"/>
 
         <EditText
@@ -38,7 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/p_word"
-            android:textColor="#FFFFFF"
+            android:textColor="@color/white"
             android:textSize="25sp"/>
 
         <EditText
@@ -48,12 +48,27 @@
             android:ems="10"
             android:inputType="textPassword" />
 
-        <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/create"
-        android:textColor="#E6007E"
-        android:textSize="15sp"/>
+        <android.support.v7.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/create"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text="@string/create"
+                android:textColor="@color/colorAccent"/>
+            
+            <Button
+                android:id="@+id/singIn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/common_signin_button_text"
+                android:textColor="@color/colorAccent"/>
+        </android.support.v7.widget.LinearLayoutCompat>
 
     </android.support.v7.widget.LinearLayoutCompat>
 

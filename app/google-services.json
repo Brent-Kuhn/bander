@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "813474922284",
+    "firebase_url": "https://bander-98025.firebaseio.com",
+    "project_id": "bander-98025",
+    "storage_bucket": "bander-98025.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:813474922284:android:de524f43d5d74e0f",
+        "android_client_info": {
+          "package_name": "group1.spring19.cop4656.floridapoly.bander"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "813474922284-iiipoid37f7tv9059h8dlk9ja23ipje0.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "group1.spring19.cop4656.floridapoly.bander",
+            "certificate_hash": "1ba1b6dafa478b65336f9ca26a32a98148642352"
+          }
+        },
+        {
+          "client_id": "813474922284-ta7hk7dv64ikplq9o1763pcf36b0jgjb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDR-oJwVxVz6mbPCLcH1Syu0_q_oO9jaTo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "813474922284-ta7hk7dv64ikplq9o1763pcf36b0jgjb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
