@@ -1,12 +1,13 @@
 <resources>
     <string name="app_name">Bander</string>
+    <string name="email">Email</string>
     <string name="u_name">User Name</string>
     <string name="p_word">Password</string>
     <string name="create">Create Account</string>
     <string name="editProfile">Edit Profile</string>
     <string name="logIn">Log In</string>
     <string name="cancel">Cancel</string>
-    <string name="next">Next</string>
+    <string name="signUp">Sign Up</string>
     <string name="yourName">Your name/Band name</string>
     <string name="youAre">You are?</string>
     <string-array name="youAreArray">
