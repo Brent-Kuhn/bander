@@ -20,6 +20,7 @@
             android:contentDescription="@string/app_name"/>
 
         <TextView
+            android:id="@+id/emailTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/email"
@@ -35,6 +36,7 @@
             android:inputType="textEmailAddress" />
 
         <TextView
+            android:id="@+id/passwordTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/p_word"
@@ -58,6 +60,7 @@
             android:textAlignment="center" />
 
         <LinearLayout
+            android:id="@+id/createGroup"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"

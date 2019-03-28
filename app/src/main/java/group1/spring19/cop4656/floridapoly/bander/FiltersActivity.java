@@ -42,25 +42,25 @@ public class FiltersActivity extends AppCompatActivity {
         lookingForVenues = (CheckBox) findViewById(R.id.lookingForCheckBox4);
 
 
-        musicGenreSpin2 = (Spinner) findViewById(R.id.musicGenreSpinner2);
+        musicGenreSpin2 = (Spinner) findViewById(R.id.musicGenreSpinner);
 
         ArrayAdapter<String> musicGenreAdapter2 = new ArrayAdapter<String>(FiltersActivity.this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.musicGenreArray));
         musicGenreAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         musicGenreSpin2.setAdapter(musicGenreAdapter2);
 
-         whatInstrumentSpin2 = (Spinner) findViewById(R.id.instrumentSpinner2);
+        whatInstrumentSpin2 = (Spinner) findViewById(R.id.instrumentSpinner);
 
         ArrayAdapter<String> whatInstrumentAdapter2 = new ArrayAdapter<String>(FiltersActivity.this,
                 android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.whatInstrumentArray));
         whatInstrumentAdapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         whatInstrumentSpin2.setAdapter(whatInstrumentAdapter2);
 
-        yourLocation = (EditText) findViewById(R.id.locationEditText);
+        yourLocation = (EditText) findViewById(R.id.yourlocationEditText);
 
-        milesAwaySeek = (SeekBar) findViewById(R.id.seekBar);
+        milesAwaySeek = (SeekBar) findViewById(R.id.maxDistanceSlider);
 
-        milesFilterText = findViewById(R.id.yourLocTextView);
+        milesFilterText = findViewById(R.id.milesFilterTextView);
 
         cancel = (Button) findViewById(R.id.filtersCancelButton);
         cancel.setOnClickListener(new View.OnClickListener() {

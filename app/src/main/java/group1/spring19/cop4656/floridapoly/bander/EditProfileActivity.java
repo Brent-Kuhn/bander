@@ -53,7 +53,7 @@ public class EditProfileActivity extends AppCompatActivity {
 
         //sets adapter for the youAre spinner
         ArrayAdapter<String> youAreAdapter = new ArrayAdapter<String>(EditProfileActivity.this,
-                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.youAreArray));
+                android.R.layout.simple_list_item_1, getResources().getStringArray(R.array.profileTypeArray));
         youAreAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         youAreSpin.setAdapter(youAreAdapter);
 
@@ -104,17 +104,17 @@ public class EditProfileActivity extends AppCompatActivity {
             }
         });
     }
-        public void goToLogin() {
-            Intent intent = new Intent(this, LogInActivity.class);
+    public void goToLogin() {
+        Intent intent = new Intent(this, LogInActivity.class);
 
-            startActivity(intent);
-        }
+        startActivity(intent);
+    }
 
-        public void goToProfile() {
-            Intent intent = new Intent(this, MainActivity.class);
+    public void goToProfile() {
+        Intent intent = new Intent(this, MainActivity.class);
 
-            startActivity(intent);
-        }
+        startActivity(intent);
+    }
 
 
 

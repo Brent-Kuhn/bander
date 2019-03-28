@@ -7,20 +7,8 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.Filter;
-
-import com.google.android.gms.auth.api.signin.GoogleSignIn;
-import com.google.android.gms.auth.api.signin.GoogleSignInClient;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.SignInButton;
-import com.google.firebase.auth.FirebaseAuth;
 
 public class MainActivity extends AppCompatActivity {
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,37 +20,33 @@ public class MainActivity extends AppCompatActivity {
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 new YourProfileFragment()).commit();
-
-
-
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-            Fragment selectedFragment = null;
+                @Override
+                public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                    Fragment selectedFragment = null;
 
-            switch(menuItem.getItemId()){
-                case R.id.nav_yourProfile:
-                     selectedFragment = new YourProfileFragment();
-                     break;
-                case R.id.nav_searchProfiles:
-                    selectedFragment = new SearchingFragment();
-                    break;
-                case R.id.nav_matches:
-                    selectedFragment = new MatchesFragment();
-                    break;
-            }
-            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    selectedFragment).commit();
-            return true;
-        }
-    };
+                    switch(menuItem.getItemId()){
+                        case R.id.nav_yourProfile:
+                            selectedFragment = new YourProfileFragment();
+                            break;
+                        case R.id.nav_searchProfiles:
+                            selectedFragment = new SearchingFragment();
+                            break;
+                        case R.id.nav_matches:
+                            selectedFragment = new MatchesFragment();
+                            break;
+                    }
+                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                            selectedFragment).commit();
+                    return true;
+                }
+            };
 
     public void goToEditFilters() {
         Intent intent = new Intent(this, FiltersActivity.class);
-
         startActivity(intent);
     }
 }

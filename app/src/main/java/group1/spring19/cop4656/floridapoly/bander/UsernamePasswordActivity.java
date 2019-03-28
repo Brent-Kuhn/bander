@@ -34,7 +34,7 @@ public class UsernamePasswordActivity extends AppCompatActivity {
         inputEmail = findViewById(R.id.inputEmail);
         inputPassword = findViewById(R.id.inputPassword);
         //this sets up on click listener for the create Account button
-        cancel = (Button) findViewById(R.id.userNamPassCancelButton);
+        cancel = (Button) findViewById(R.id.userNamePassWordCancelButton);
         cancel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -43,7 +43,7 @@ public class UsernamePasswordActivity extends AppCompatActivity {
             }
         });
 
-        signUp = (Button) findViewById(R.id.userNamePassNextButton);
+        signUp = (Button) findViewById(R.id.userNamePassWordSignUpButton);
         signUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

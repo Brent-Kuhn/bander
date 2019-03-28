@@ -79,7 +79,7 @@ public class YourProfileFragment extends Fragment {
     public void goToEditFilters() {
         Intent intent = new Intent(getActivity(), FiltersActivity.class);
 
-       startActivity(intent);
+        startActivity(intent);
     }
 
     public void goToEditProfile() {
