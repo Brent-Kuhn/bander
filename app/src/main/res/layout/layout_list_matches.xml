@@ -27,7 +27,7 @@
         android:text="John Smith"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/matchesContactInfoTextView"
-        app:layout_constraintStart_toEndOf="@+id/image"
+        app:layout_constraintStart_toEndOf="@+id/matchesImageView"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
