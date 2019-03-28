@@ -3,7 +3,7 @@
     <string name="email">Email</string>
     <string name="u_name">User Name</string>
     <string name="p_word">Password</string>
-    <string name="create">Create Account</string>
+    <string name="createAccount">Create Account</string>
     <string name="editProfile">Edit Profile</string>
     <string name="logIn">Log In</string>
     <string name="cancel">Cancel</string>
