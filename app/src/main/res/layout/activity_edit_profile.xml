@@ -33,7 +33,7 @@
             android:layout_height="wrap_content">
 
             <LinearLayout
-                android:id="@+id/linearLayout"
+                android:id="@+id/BandInfoLinearLayout"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
@@ -143,10 +143,10 @@
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+                app:layout_constraintTop_toBottomOf="@+id/BandInfoLinearLayout">
 
                 <TextView
-                    android:id="@+id/textView9"
+                    android:id="@+id/addImagesTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/addImage"
@@ -194,7 +194,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayout3"
+                android:id="@+id/linksEditLinearLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -247,7 +247,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayout4"
+                android:id="@+id/yourBioLinearLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -256,7 +256,7 @@
                 android:orientation="vertical"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout3">
+                app:layout_constraintTop_toBottomOf="@+id/linksEditLinearLayout">
 
                 <TextView
                     android:id="@+id/yourBioTextView"
@@ -274,17 +274,17 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/linearLayout5"
+                android:id="@+id/yourContactLinearLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="24dp"
                 android:orientation="vertical"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout4">
+                app:layout_constraintTop_toBottomOf="@+id/yourBioLinearLayout">
 
                 <TextView
-                    android:id="@+id/textView2"
+                    android:id="@+id/yourContactTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/yourContact"
@@ -307,7 +307,7 @@
                 android:layout_marginTop="24dp"
                 android:text="@string/cancel"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
+                app:layout_constraintTop_toBottomOf="@+id/yourContactLinearLayout" />
 
             <Button
                 android:id="@+id/editProfileDoneButton"
@@ -317,7 +317,7 @@
                 android:layout_marginEnd="8dp"
                 android:text="@string/done"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linearLayout5" />
+                app:layout_constraintTop_toBottomOf="@+id/yourContactLinearLayout" />
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

@@ -69,7 +69,7 @@ public class UsernamePasswordActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful()) {
-                            Toast.makeText(UsernamePasswordActivity.this, "Authentification failed " + task.getException(),  Toast.LENGTH_SHORT).show();
+                            Toast.makeText(UsernamePasswordActivity.this, "Authentication failed " + task.getException(),  Toast.LENGTH_SHORT).show();
                         } else{
                             startActivity(new Intent(UsernamePasswordActivity.this, EditProfileActivity.class));
                             finish();
