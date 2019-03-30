@@ -88,7 +88,7 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     public void createUnamePword() {
-        Intent intent = new Intent(this, UsernamePasswordActivity.class);
+        Intent intent = new Intent(this, CreateAccountActivity.class);
 
         startActivity(intent);
     }

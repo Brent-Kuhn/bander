@@ -15,7 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
-public class UsernamePasswordActivity extends AppCompatActivity {
+public class CreateAccountActivity extends AppCompatActivity {
 
     private EditText inputEmail;
     private EditText inputPassword;
@@ -65,13 +65,13 @@ public class UsernamePasswordActivity extends AppCompatActivity {
                     return;
                 }
 
-                auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(UsernamePasswordActivity.this, new OnCompleteListener<AuthResult>() {
+                auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(CreateAccountActivity.this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(!task.isSuccessful()) {
-                            Toast.makeText(UsernamePasswordActivity.this, "Authentication failed " + task.getException(),  Toast.LENGTH_SHORT).show();
+                            Toast.makeText(CreateAccountActivity.this, "Authentication failed " + task.getException(),  Toast.LENGTH_SHORT).show();
                         } else{
-                            startActivity(new Intent(UsernamePasswordActivity.this, EditProfileActivity.class));
+                            startActivity(new Intent(CreateAccountActivity.this, EditProfileActivity.class));
                             finish();
                         }
                     }
