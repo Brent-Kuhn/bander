@@ -26,7 +26,7 @@ public class CreateAccountActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_username_password);
+        setContentView(R.layout.create_account);
 
         // Get the Firebase auth instance
         auth = FirebaseAuth.getInstance();
