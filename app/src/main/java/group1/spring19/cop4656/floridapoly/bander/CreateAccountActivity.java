@@ -14,6 +14,10 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class CreateAccountActivity extends AppCompatActivity {
 
@@ -22,6 +26,9 @@ public class CreateAccountActivity extends AppCompatActivity {
     private Button signUp;
     private Button cancel;
     private FirebaseAuth auth;
+    private DatabaseReference mDatabase;
+    private FirebaseUser user;
+    private String userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +37,9 @@ public class CreateAccountActivity extends AppCompatActivity {
 
         // Get the Firebase auth instance
         auth = FirebaseAuth.getInstance();
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        DataSnapshot dataSnapshot;
 
         inputEmail = findViewById(R.id.inputEmail);
         inputPassword = findViewById(R.id.inputPassword);
@@ -71,6 +81,18 @@ public class CreateAccountActivity extends AppCompatActivity {
                         if(!task.isSuccessful()) {
                             Toast.makeText(CreateAccountActivity.this, "Authentication failed " + task.getException(),  Toast.LENGTH_SHORT).show();
                         } else{
+                            // User information
+                            user = FirebaseAuth.getInstance().getCurrentUser();
+                            userId = user.getUid();
+
+                            mDatabase.child("users").child(userId).child("email").setValue(user.getEmail());
+                            mDatabase.child("users").child(userId).child("username").setValue("");
+                            mDatabase.child("users").child(userId).child("type").setValue("");
+                            mDatabase.child("users").child(userId).child("genre").setValue("");
+                            mDatabase.child("users").child(userId).child("instrument").setValue("");
+                            mDatabase.child("users").child(userId).child("link").setValue("");
+                            mDatabase.child("users").child(userId).child("bio").setValue("");
+                            mDatabase.child("users").child(userId).child("contact").setValue("");
                             startActivity(new Intent(CreateAccountActivity.this, EditProfileActivity.class));
                             finish();
                         }

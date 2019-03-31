@@ -41,7 +41,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/yourNameTextView"
+                    android:id="@+id/userNameTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -52,7 +52,7 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <EditText
-                    android:id="@+id/yourNameEditText"
+                    android:id="@+id/userNameEditText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -60,7 +60,7 @@
                     android:ems="10"
                     android:inputType="textPersonName"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/yourNameTextView" />
+                    app:layout_constraintTop_toBottomOf="@+id/userNameTextView" />
 
                 <TextView
                     android:id="@+id/youAreTextView"
@@ -71,7 +71,7 @@
                     android:text="@string/profileType"
                     android:textSize="20sp"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/yourNameEditText" />
+                    app:layout_constraintTop_toBottomOf="@+id/userNameEditText" />
 
                 <Spinner
                     android:id="@+id/youAreSpinner"
@@ -207,7 +207,7 @@
                     android:id="@+id/LinkTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/yourLinks"
+                    android:text="@string/userLinks"
                     android:textSize="20sp" />
 
                 <EditText
@@ -247,7 +247,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/yourBioLinearLayout"
+                android:id="@+id/userBioLinearLayout"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -259,14 +259,14 @@
                 app:layout_constraintTop_toBottomOf="@+id/linksEditLinearLayout">
 
                 <TextView
-                    android:id="@+id/yourBioTextView"
+                    android:id="@+id/userBioTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/yourBio"
+                    android:text="@string/userBio"
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/yourBioEditText"
+                    android:id="@+id/userBioEditText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:ems="10"
@@ -274,28 +274,28 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/yourContactLinearLayout"
+                android:id="@+id/userContactLinearLayout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="24dp"
                 android:orientation="vertical"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/yourBioLinearLayout">
+                app:layout_constraintTop_toBottomOf="@+id/userBioLinearLayout">
 
                 <TextView
-                    android:id="@+id/yourContactTextView"
+                    android:id="@+id/userContactTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/yourContact"
+                    android:text="@string/userContact"
                     android:textSize="20sp" />
 
                 <EditText
-                    android:id="@+id/yourContactEditText"
+                    android:id="@+id/userContactEditText"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
-                    android:hint="@string/yourContactHint"
+                    android:hint="@string/userContactHint"
                     android:inputType="textPersonName" />
             </LinearLayout>
 
@@ -307,7 +307,7 @@
                 android:layout_marginTop="24dp"
                 android:text="@string/cancel"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/yourContactLinearLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/userContactLinearLayout" />
 
             <Button
                 android:id="@+id/editProfileDoneButton"
@@ -317,7 +317,7 @@
                 android:layout_marginEnd="8dp"
                 android:text="@string/done"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/yourContactLinearLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/userContactLinearLayout" />
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
