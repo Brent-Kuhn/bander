@@ -160,6 +160,9 @@ public class EditProfileActivity extends AppCompatActivity {
             uInfo.setUsername(ds.child(userId).getValue(UserInfo.class).getUsername());
 
             mUserName.setText(uInfo.getUsername());
+            mLink_1.setText(uInfo.getLink());
+            mUserBio.setText(uInfo.getBio());
+            mUserContactInfo.setText(uInfo.getContact());
         }
     }
 
