@@ -35,9 +35,9 @@ public class MainActivity extends AppCompatActivity {
                         case R.id.nav_searchProfiles:
                             selectedFragment = new SearchingFragment();
                             break;
-                        case R.id.nav_matches:
-                            selectedFragment = new MatchesFragment();
-                            break;
+//                        case R.id.nav_matches:
+//                            selectedFragment = new MatchesFragment();
+//                            break;
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             selectedFragment).commit();

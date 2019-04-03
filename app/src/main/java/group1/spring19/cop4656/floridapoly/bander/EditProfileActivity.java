@@ -35,18 +35,14 @@ public class EditProfileActivity extends AppCompatActivity {
     private Spinner musicGenreSpin;
     private Spinner whatInstrumentSpin;
 
-    private EditText mLink_1;
-    private EditText mLink_2;
-    private EditText mLink_3;
-    private EditText mLink_4;
+    private EditText mLink;
+
 
     private EditText mUserBio;
     private EditText mUserContactInfo;
 
-    private ImageButton mAddImage_1;
-    private ImageButton mAddImage_2;
-    private ImageButton mAddImage_3;
-    private ImageButton mAddImage_4;
+    private ImageButton mAddImage;
+
 
     private Button cancel;
     private Button done;
@@ -112,15 +108,9 @@ public class EditProfileActivity extends AppCompatActivity {
         whatInstrumentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         whatInstrumentSpin.setAdapter(whatInstrumentAdapter);
 
-        mAddImage_1 = (ImageButton) findViewById(R.id.profileImageButton1);
-        mAddImage_2 = (ImageButton) findViewById(R.id.profileImageButton2);
-        mAddImage_3 = (ImageButton) findViewById(R.id.profileImageButton3);
-        mAddImage_4 = (ImageButton) findViewById(R.id.profileImageButton4);
+        mAddImage = (ImageButton) findViewById(R.id.profileImageButton1);
 
-        mLink_1 = findViewById(R.id.linkEditText1);
-        mLink_2 = findViewById(R.id.linkEditText2);
-        mLink_3 = findViewById(R.id.linkEditText3);
-        mLink_4 = findViewById(R.id.linkEditText4);
+        mLink = findViewById(R.id.linkEditText1);
         mUserBio = findViewById(R.id.userBioEditText);
         mUserContactInfo = findViewById(R.id.userContactEditText);
 
@@ -141,7 +131,7 @@ public class EditProfileActivity extends AppCompatActivity {
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateProfile(userId, user.getDisplayName(), "", "", "", mLink_1.getText().toString(), mUserBio.getText().toString(), mUserContactInfo.getText().toString());
+                updateProfile(userId, user.getDisplayName(), "", "", "", mLink.getText().toString(), mUserBio.getText().toString(), mUserContactInfo.getText().toString());
 
                 goToProfile();
             }
@@ -160,7 +150,7 @@ public class EditProfileActivity extends AppCompatActivity {
             uInfo.setUsername(ds.child(userId).getValue(UserInfo.class).getUsername());
 
             mUserName.setText(uInfo.getUsername());
-            mLink_1.setText(uInfo.getLink());
+            mLink.setText(uInfo.getLink());
             mUserBio.setText(uInfo.getBio());
             mUserContactInfo.setText(uInfo.getContact());
         }

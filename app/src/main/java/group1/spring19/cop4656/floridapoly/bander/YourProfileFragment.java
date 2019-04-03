@@ -54,15 +54,6 @@ public class YourProfileFragment extends Fragment {
             }
         });
 
-        editFilters = (Button) v.findViewById(R.id.editFiltersButton);
-        editFilters.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                goToEditFilters();
-
-            }
-        });
-
         editProfile = (Button) v.findViewById(R.id.editProfileButton);
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override

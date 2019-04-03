@@ -47,8 +47,8 @@
         <item>Woodwinds</item>
         <item>Other</item>
     </string-array>
-    <string name="addImage">Add Images</string>
-    <string name="userLinks">Links for website, music videos, social media, etc.</string>
+    <string name="addImage">Add Image</string>
+    <string name="userLinks">Link for website, music videos, social media, etc.</string>
     <string name="userBio">Your Bio</string>
     <string name="userContact">Your Contact Info</string>
     <string name="userContactHint">Phone Number or Email</string>
@@ -64,7 +64,7 @@
     <string name="userLocation">Your location?</string>
     <string name="maxDistance">Max Distance</string>
     <string name="userProfile">Your Profile</string>
-    <string name="links">Links</string>
+    <string name="links">Link</string>
     <string name="bio">Bio</string>
     <string name="matches">Matches</string>
 </resources>

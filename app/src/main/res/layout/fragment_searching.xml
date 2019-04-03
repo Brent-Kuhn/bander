@@ -6,33 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/declineActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginBottom="64dp"
-        android:clickable="true"
-        android:tint="@color/colorAccent"
-        app:backgroundTint="@color/colorPrimary"
-        app:layout_constraintBottom_toBottomOf="@+id/srchProfileScrollView"
-        app:layout_constraintStart_toStartOf="@+id/srchProfileScrollView"
-        app:srcCompat="@android:drawable/ic_delete" />
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/likeActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="64dp"
-        android:layout_marginBottom="64dp"
-        android:clickable="true"
-        android:tint="@color/colorAccent"
-        app:backgroundTint="@color/colorPrimary"
-        app:fabSize="auto"
-        app:layout_constraintBottom_toBottomOf="@+id/srchProfileScrollView"
-        app:layout_constraintEnd_toEndOf="@+id/srchProfileScrollView"
-        app:srcCompat="@drawable/ic_check_black_24dp" />
-
     <ScrollView
         android:id="@+id/srchProfileScrollView"
         android:layout_width="match_parent"
@@ -58,6 +31,18 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/distanceTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="12 Miles"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bandNameSrchTextView" />
+
+            <TextView
                 android:id="@+id/ArtistTypeSrchTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -66,7 +51,7 @@
                 android:text="Rock Band/Guitarist/Electronic Producer"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bandNameSrchTextView" />
+                app:layout_constraintTop_toBottomOf="@+id/distanceTextView" />
 
             <ImageView
                 android:id="@+id/srchProfileImageView"
@@ -79,29 +64,6 @@
                 app:layout_constraintTop_toBottomOf="@+id/ArtistTypeSrchTextView"
                 app:srcCompat="@drawable/bander_logo" />
 
-            <ImageButton
-                android:id="@+id/nextSrchImageButton"
-                style="@style/Widget.AppCompat.ImageButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="8dp"
-                android:adjustViewBounds="false"
-                android:rotation="90"
-                app:layout_constraintBottom_toBottomOf="@+id/srchProfileImageView"
-                app:layout_constraintEnd_toEndOf="@+id/srchProfileImageView"
-                app:layout_constraintTop_toTopOf="@+id/srchProfileImageView"
-                app:srcCompat="@android:drawable/arrow_up_float" />
-
-            <ImageButton
-                android:id="@+id/previousSrchImageButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:rotation="270"
-                app:layout_constraintBottom_toBottomOf="@+id/srchProfileImageView"
-                app:layout_constraintStart_toStartOf="@+id/srchProfileImageView"
-                app:layout_constraintTop_toTopOf="@+id/srchProfileImageView"
-                app:srcCompat="@android:drawable/arrow_up_float" />
 
             <TextView
                 android:id="@+id/linksSrchTextView"
@@ -125,25 +87,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/linksSrchTextView">
 
                 <TextView
-                    android:id="@+id/linkTextView1"
+                    android:id="@+id/linkTextView"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="15sp" />
 
-                <TextView
-                    android:id="@+id/linkTextView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/linkTextView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
-
-                <TextView
-                    android:id="@+id/linkTextView4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content" />
             </LinearLayout>
 
             <TextView
@@ -168,6 +116,59 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/bioSearchingTextView" />
+
+            <TextView
+                android:id="@+id/contactText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:text="Contact"
+                android:textSize="25sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/bioSrchTextView" />
+
+            <TextView
+                android:id="@+id/contactTextView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/contactText" />
+
+            <android.support.v7.widget.LinearLayoutCompat
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/contactTextView" >
+
+                <Button
+                    android:id="@+id/previousButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="Previous"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/userContactLinearLayout" />
+
+                <Button
+                    android:id="@+id/nextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight=".5"
+                    android:layout_marginTop="24dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="Next"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/userContactLinearLayout" />
+
+            </android.support.v7.widget.LinearLayoutCompat>
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
