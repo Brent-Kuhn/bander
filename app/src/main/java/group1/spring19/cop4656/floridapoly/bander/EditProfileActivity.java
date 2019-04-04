@@ -108,7 +108,7 @@ public class EditProfileActivity extends AppCompatActivity {
         whatInstrumentAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         whatInstrumentSpin.setAdapter(whatInstrumentAdapter);
 
-        mAddImage = (ImageButton) findViewById(R.id.profileImageButton1);
+        mAddImage = (ImageButton) findViewById(R.id.profileImageButton);
 
         mLink = findViewById(R.id.linkEditText1);
         mUserBio = findViewById(R.id.userBioEditText);

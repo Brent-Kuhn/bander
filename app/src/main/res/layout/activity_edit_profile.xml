@@ -159,7 +159,7 @@
                     android:orientation="horizontal">
 
                     <ImageButton
-                        android:id="@+id/profileImageButton1"
+                        android:id="@+id/profileImageButton"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:scaleType="fitXY"
