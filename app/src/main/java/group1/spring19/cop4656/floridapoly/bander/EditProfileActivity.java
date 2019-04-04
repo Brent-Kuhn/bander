@@ -131,7 +131,8 @@ public class EditProfileActivity extends AppCompatActivity {
         done.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                updateProfile(userId, mUserName.getText().toString(), "", "", "", mLink.getText().toString(), mUserBio.getText().toString(), mUserContactInfo.getText().toString());
+
+                updateProfile(userId, mUserName.getText().toString(), String.valueOf(youAreSpin.getSelectedItem()),String.valueOf(musicGenreSpin.getSelectedItem()),String.valueOf(whatInstrumentSpin.getSelectedItem()), mLink.getText().toString(), mUserBio.getText().toString(), mUserContactInfo.getText().toString());
 
                 goToProfile();
             }
