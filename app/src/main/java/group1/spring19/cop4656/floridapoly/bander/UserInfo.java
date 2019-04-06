@@ -9,6 +9,7 @@ public class UserInfo {
     private String link;
     private String type;
     private String username;
+    private String image;
 
     public UserInfo(){
 
@@ -77,5 +78,13 @@ public class UserInfo {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

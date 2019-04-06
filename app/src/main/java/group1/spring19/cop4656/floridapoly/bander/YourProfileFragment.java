@@ -12,6 +12,8 @@ import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
 
 public class YourProfileFragment extends Fragment {
 
@@ -21,6 +23,8 @@ public class YourProfileFragment extends Fragment {
 
     private FirebaseAuth.AuthStateListener authListener;
     private FirebaseAuth auth;
+    private FirebaseUser user;
+    private String userId;
 
 
     @Nullable
@@ -30,9 +34,11 @@ public class YourProfileFragment extends Fragment {
 
         // get Firebase auth instance
         auth = FirebaseAuth.getInstance();
-
         // get current user info
-        final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        userId = user.getUid();
+
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
 
         authListener = new FirebaseAuth.AuthStateListener() {
             @Override

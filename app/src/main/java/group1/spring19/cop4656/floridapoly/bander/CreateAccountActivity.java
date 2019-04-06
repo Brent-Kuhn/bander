@@ -93,6 +93,7 @@ public class CreateAccountActivity extends AppCompatActivity {
                             mDatabase.child("users").child(userId).child("link").setValue("");
                             mDatabase.child("users").child(userId).child("bio").setValue("");
                             mDatabase.child("users").child(userId).child("contact").setValue("");
+                            mDatabase.child("users").child(userId).child("image").setValue("https://firebasestorage.googleapis.com/v0/b/bander-98025.appspot.com/o/bander-logo.png?alt=media&token=8e38e2d9-1e0b-4177-b1a3-98c2a522bd42");
                             startActivity(new Intent(CreateAccountActivity.this, EditProfileActivity.class));
                             finish();
                         }
