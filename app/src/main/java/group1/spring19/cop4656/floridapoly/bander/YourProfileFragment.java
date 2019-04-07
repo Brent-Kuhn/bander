@@ -44,6 +44,7 @@ public class YourProfileFragment extends Fragment {
     private TextView mUserName;
     private TextView mInstrument;
     private TextView mUserType;
+    private TextView mGenre;
     private ImageView mUserImage;
     private String image;
 
@@ -77,6 +78,7 @@ public class YourProfileFragment extends Fragment {
         mUserName = (TextView) v.findViewById(R.id.bandNameSrchTextView);
         mUserType = (TextView) v.findViewById(R.id.ArtistTypeSrchTextView);
         mInstrument = (TextView) v.findViewById(R.id.InstrumentTextView);
+        mGenre = (TextView) v.findViewById(R.id.genreTextView);
         mLink = (TextView) v.findViewById(R.id.linkTextView);
         mUserBio = (TextView) v.findViewById(R.id.bioTextView);
         mUserContactInfo = (TextView) v.findViewById(R.id.contactTextView);
@@ -130,6 +132,7 @@ public class YourProfileFragment extends Fragment {
             mUserName.setText(uInfo.getUsername());
             mUserType.setText(uInfo.getType());
             mInstrument.setText(uInfo.getInstrument());
+            mGenre.setText(uInfo.getGenre());
             mLink.setText(uInfo.getLink());
             mUserBio.setText(uInfo.getBio());
             mUserContactInfo.setText(uInfo.getContact());
