@@ -137,7 +137,7 @@ public class YourProfileFragment extends Fragment {
             mUserBio.setText(uInfo.getBio());
             mUserContactInfo.setText(uInfo.getContact());
             image = uInfo.getImage();
-            if (image != null) {
+            if (image != null & image != "") {
                 Glide.with(this).load(image).into(mUserImage);
 
             }
