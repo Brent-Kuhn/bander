@@ -226,6 +226,15 @@ public class EditProfileActivity extends AppCompatActivity {
             mUserContactInfo.setText(uInfo.getContact());
             image = uInfo.getImage();
             Glide.with(this).load(image).into(mAddImage);
+            if (uInfo.getType() != "" & uInfo.getType() != null) {
+                youAreSpin.setSelection(((ArrayAdapter<String>)youAreSpin.getAdapter()).getPosition(uInfo.getType()));
+            }
+            if (uInfo.getGenre() != "" & uInfo.getGenre() != null) {
+                musicGenreSpin.setSelection(((ArrayAdapter<String>)musicGenreSpin.getAdapter()).getPosition(uInfo.getGenre()));
+            }
+            if (uInfo.getInstrument() != "" & uInfo.getInstrument() != null) {
+                whatInstrumentSpin.setSelection(((ArrayAdapter<String>)whatInstrumentSpin.getAdapter()).getPosition(uInfo.getInstrument()));
+            }
         }
     }
 

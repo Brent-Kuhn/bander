@@ -88,7 +88,7 @@ public class YourProfileFragment extends Fragment {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user ==null) {
+                if (user == null) {
                     // If there is no logged in user, bring them to the login activity
                     startActivity(new Intent(getActivity(), LogInActivity.class));
                     getActivity().finish();
@@ -118,7 +118,7 @@ public class YourProfileFragment extends Fragment {
     }
 
     private void getData(DataSnapshot dataSnapshot) {
-        for(DataSnapshot ds : dataSnapshot.getChildren()) {
+        for (DataSnapshot ds : dataSnapshot.getChildren()) {
             UserInfo uInfo = new UserInfo();
             uInfo.setBio(ds.child(userId).getValue(UserInfo.class).getBio());
             uInfo.setContact(ds.child(userId).getValue(UserInfo.class).getContact());
@@ -137,7 +137,10 @@ public class YourProfileFragment extends Fragment {
             mUserBio.setText(uInfo.getBio());
             mUserContactInfo.setText(uInfo.getContact());
             image = uInfo.getImage();
-            Glide.with(this).load(image).into(mUserImage);
+            if (image != null) {
+                Glide.with(this).load(image).into(mUserImage);
+
+            }
         }
     }
 
