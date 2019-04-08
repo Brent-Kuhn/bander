@@ -79,12 +79,8 @@ public class LogInActivity extends AppCompatActivity {
                     }
                 });
 //                goToProfile();
-
             }
         });
-
-
-
     }
 
     public void createUnamePword() {

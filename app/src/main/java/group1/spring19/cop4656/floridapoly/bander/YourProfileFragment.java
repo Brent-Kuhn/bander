@@ -137,9 +137,11 @@ public class YourProfileFragment extends Fragment {
             mUserBio.setText(uInfo.getBio());
             mUserContactInfo.setText(uInfo.getContact());
             image = uInfo.getImage();
-            if (image != null & image != "") {
+            try {
                 Glide.with(this).load(image).into(mUserImage);
 
+            } catch(NullPointerException e) {
+                e.printStackTrace();
             }
         }
     }
@@ -161,5 +163,27 @@ public class YourProfileFragment extends Fragment {
         startActivity(new Intent(getActivity(), LogInActivity.class));
         getActivity().finish();
     }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = auth.getCurrentUser();
+        if (currentUser == null) {
+            startActivity(new Intent(getActivity(), LogInActivity.class));
+            getActivity().finish();
+        }
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        // Check if user is signed in (non-null) and update UI accordingly.
+        FirebaseUser currentUser = auth.getCurrentUser();
+        if (currentUser == null) {
+            startActivity(new Intent(getActivity(), LogInActivity.class));
+            getActivity().finish();
+        }
+    }
+
 
 }
