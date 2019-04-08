@@ -167,6 +167,13 @@ public class EditProfileActivity extends AppCompatActivity {
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             pd.dismiss();
                             Toast.makeText(EditProfileActivity.this, "Upload successful", Toast.LENGTH_SHORT).show();
+                            mStorageRef.child(userId).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    imageUri = uri.toString();
+                                    mDatabase.child("users").child(userId).child("image").setValue(imageUri);
+                                }
+                            });
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
@@ -178,13 +185,7 @@ public class EditProfileActivity extends AppCompatActivity {
                 }
             }
         });
-        mStorageRef.child(userId).getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                imageUri = uri.toString();
-                mDatabase.child("users").child(userId).child("image").setValue(imageUri);
-            }
-        });
+
 
         cancel = (Button) findViewById(R.id.editProfileCancelButton);
         cancel.setOnClickListener(new View.OnClickListener() {
@@ -225,7 +226,10 @@ public class EditProfileActivity extends AppCompatActivity {
             mUserBio.setText(uInfo.getBio());
             mUserContactInfo.setText(uInfo.getContact());
             image = uInfo.getImage();
-            Glide.with(this).load(image).into(mAddImage);
+            if (image != null & image != "") {
+                Glide.with(this).load(image).into(mAddImage);
+
+            }
             if (uInfo.getType() != "" & uInfo.getType() != null) {
                 youAreSpin.setSelection(((ArrayAdapter<String>)youAreSpin.getAdapter()).getPosition(uInfo.getType()));
             }
