@@ -25,7 +25,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    List<String> dbUserIds = new ArrayList<>();
+    ArrayList<String> dbUserIds = new ArrayList<>();
     private FirebaseAuth auth;
     private DatabaseReference mDatabase;
     private FirebaseUser user;
@@ -90,7 +90,10 @@ public class MainActivity extends AppCompatActivity {
                             //pass position
 
                                     selectedFragment = new SearchingFragment();
-                                    pd.dismiss();
+                                    Bundle bundle = new Bundle();
+                                    bundle.putStringArrayList("users", dbUserIds);
+                                    selectedFragment.setArguments(bundle);
+
                                     break;
 
 //                        case R.id.nav_matches:
@@ -99,6 +102,7 @@ public class MainActivity extends AppCompatActivity {
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             selectedFragment).commit();
+                    pd.dismiss();
                     return true;
                 }
             };
