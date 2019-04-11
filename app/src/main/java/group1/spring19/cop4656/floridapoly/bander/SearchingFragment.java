@@ -25,8 +25,10 @@ public class SearchingFragment extends Fragment {
 
         Bundle bundle = this.getArguments();
         if (bundle != null) {
+            // How to access the values
             ArrayList<String> userList = bundle.getStringArrayList("users");
-            Log.v("Users", userList.toString());
+            String userId = bundle.getString("id");
+            int position = bundle.getInt("position");
         }
         return inflater.inflate(R.layout.fragment_searching,container, false);
 

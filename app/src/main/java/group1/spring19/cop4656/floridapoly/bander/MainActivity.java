@@ -30,8 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private FirebaseUser user;
     private String userId;
-
-    private int notDoneYet = 0;
+    private int position;
 
     ProgressDialog pd;
 
@@ -40,8 +39,13 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        position = 0;
+
         // Get the Firebase auth instance
         auth = FirebaseAuth.getInstance();
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        userId = user.getUid();
 
 
         pd = new ProgressDialog(this);
@@ -83,15 +87,14 @@ public class MainActivity extends AppCompatActivity {
                                     }
                                 });
 
-                               // for (int i = 0; i < dbUserIds.size(); i++)
-                                 //   Log.v("Users", dbUserIds.get(i));
-
                             //pass list
                             //pass position
 
                                     selectedFragment = new SearchingFragment();
                                     Bundle bundle = new Bundle();
                                     bundle.putStringArrayList("users", dbUserIds);
+                                    bundle.putString("id", userId);
+                                    bundle.putInt("position", position);
                                     selectedFragment.setArguments(bundle);
 
                                     break;
@@ -115,17 +118,11 @@ public class MainActivity extends AppCompatActivity {
     private void getUsers(DataSnapshot dataSnapshot) {
 
         for(DataSnapshot child : dataSnapshot.getChildren() ){
-            // Do magic here
 
             for(DataSnapshot child2 : child.getChildren() ){
-                //Log.v("Users", child2.getKey());
                 dbUserIds.add(child2.getKey());
             }
         }
-        for(int i = 0; i < dbUserIds.size(); i++)
-        Log.v("Users",dbUserIds.get(i));
-
-        notDoneYet = 1;
 
     }
 
