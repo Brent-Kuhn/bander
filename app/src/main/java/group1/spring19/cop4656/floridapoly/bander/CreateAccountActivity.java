@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -23,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 public class CreateAccountActivity extends AppCompatActivity {
 
+    private static final String TAG = "CreateAccountActivity";
     private EditText inputEmail;
     private EditText inputPassword;
     private Button signUp;
@@ -151,5 +153,31 @@ public class CreateAccountActivity extends AppCompatActivity {
         Intent intent = new Intent(this, LogInActivity.class);
 
         startActivity(intent);
+    }
+
+    @Override
+    public void onStart(){
+        Log.d(TAG,"onStart() called");
+        super.onStart();
+    }
+    @Override
+    public void onResume() {
+        Log.d(TAG,"onResume() called");
+        super.onResume();
+    }
+    @Override
+    public void onPause() {
+        Log.d(TAG,"onPause() called");
+        super.onPause();
+    }
+    @Override
+    public void onStop() {
+        Log.d(TAG,"onStop() called");
+        super.onStop();
+    }
+    @Override
+    public void onDestroy() {
+        Log.d(TAG,"onDestroy() called");
+        super.onDestroy();
     }
 }

@@ -3,6 +3,7 @@ package group1.spring19.cop4656.floridapoly.bander;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -30,6 +31,8 @@ public class FiltersActivity extends AppCompatActivity {
 
     private Button cancel;
     private Button done;
+
+    private static final String TAG = "FiltersActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,5 +97,31 @@ public class FiltersActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
 
         startActivity(intent);
+    }
+
+    @Override
+    public void onStart(){
+        Log.d(TAG,"onStart() called");
+        super.onStart();
+    }
+    @Override
+    public void onResume() {
+        Log.d(TAG,"onResume() called");
+        super.onResume();
+    }
+    @Override
+    public void onPause() {
+        Log.d(TAG,"onPause() called");
+        super.onPause();
+    }
+    @Override
+    public void onStop() {
+        Log.d(TAG,"onStop() called");
+        super.onStop();
+    }
+    @Override
+    public void onDestroy() {
+        Log.d(TAG,"onDestroy() called");
+        super.onDestroy();
     }
 }

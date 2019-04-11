@@ -295,4 +295,30 @@ public class EditProfileActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onStart(){
+        Log.d(TAG,"onStart() called");
+        super.onStart();
+    }
+    @Override
+    public void onResume() {
+        Log.d(TAG,"onResume() called");
+        super.onResume();
+    }
+    @Override
+    public void onPause() {
+        Log.d(TAG,"onPause() called");
+        super.onPause();
+    }
+    @Override
+    public void onStop() {
+        Log.d(TAG,"onStop() called");
+        super.onStop();
+    }
+    @Override
+    public void onDestroy() {
+        Log.d(TAG,"onDestroy() called");
+        super.onDestroy();
+    }
+
 }
