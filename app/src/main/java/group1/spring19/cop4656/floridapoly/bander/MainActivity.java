@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment = new YourProfileFragment();
                             break;
                         case R.id.nav_searchProfiles:
+                            //pass list
+                            //pass position
                             selectedFragment = new SearchingFragment();
                             break;
 //                        case R.id.nav_matches:

@@ -12,6 +12,20 @@ public class SearchingFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        //list
+        //position
+        // if position > max listval postion = 0
+        // if position < 0 position = max listval
         return inflater.inflate(R.layout.fragment_searching,container, false);
+
+        //onclick next
+        //  pass list
+        //  pass position++
+        //  start SearchingFragment
+
+        //onClick prev
+        //  pass list
+        //  pass position--
+        // start SearchingFragment
     }
 }
