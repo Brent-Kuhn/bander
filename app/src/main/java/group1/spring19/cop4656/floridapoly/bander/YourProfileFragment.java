@@ -75,14 +75,14 @@ public class YourProfileFragment extends Fragment {
             }
         });
 
-        mUserName = (TextView) v.findViewById(R.id.bandNameSrchTextView);
-        mUserType = (TextView) v.findViewById(R.id.ArtistTypeSrchTextView);
-        mInstrument = (TextView) v.findViewById(R.id.InstrumentTextView);
-        mGenre = (TextView) v.findViewById(R.id.genreTextView);
-        mLink = (TextView) v.findViewById(R.id.linkTextView);
-        mUserBio = (TextView) v.findViewById(R.id.bioTextView);
-        mUserContactInfo = (TextView) v.findViewById(R.id.contactTextView);
-        mUserImage = (ImageView) v.findViewById(R.id.srchProfileImageView);
+        mUserName = (TextView) v.findViewById(R.id.bandNameProfTextView);
+        mUserType = (TextView) v.findViewById(R.id.ArtistTypeProfTextView);
+        mInstrument = (TextView) v.findViewById(R.id.InstrumentProfTextView);
+        mGenre = (TextView) v.findViewById(R.id.genreProfTextView);
+        mLink = (TextView) v.findViewById(R.id.linkProfTextView);
+        mUserBio = (TextView) v.findViewById(R.id.bioProfTextView);
+        mUserContactInfo = (TextView) v.findViewById(R.id.contactProfTextView);
+        mUserImage = (ImageView) v.findViewById(R.id.ProfileImageView);
 
         authListener = new FirebaseAuth.AuthStateListener() {
             @Override

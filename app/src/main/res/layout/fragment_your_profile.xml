@@ -31,7 +31,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/bandNameSrchTextView"
+                android:id="@+id/bandNameProfTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -43,7 +43,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/editProfileButton" />
 
             <TextView
-                android:id="@+id/ArtistTypeSrchTextView"
+                android:id="@+id/ArtistTypeProfTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -51,10 +51,10 @@
                 android:text="Rock Band/Guitarist/Electronic Producer"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bandNameSrchTextView" />
+                app:layout_constraintTop_toBottomOf="@+id/bandNameProfTextView" />
 
             <TextView
-                android:id="@+id/InstrumentTextView"
+                android:id="@+id/InstrumentProfTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -62,10 +62,10 @@
                 android:text="Instrument"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ArtistTypeSrchTextView" />
+                app:layout_constraintTop_toBottomOf="@+id/ArtistTypeProfTextView" />
 
             <TextView
-                android:id="@+id/genreTextView"
+                android:id="@+id/genreProfTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -73,21 +73,21 @@
                 android:text="Genre"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/InstrumentTextView" />
+                app:layout_constraintTop_toBottomOf="@+id/InstrumentProfTextView" />
 
             <ImageView
-                android:id="@+id/srchProfileImageView"
+                android:id="@+id/ProfileImageView"
                 android:layout_width="0dp"
                 android:layout_height="400dp"
                 android:layout_marginTop="32dp"
                 android:scaleType="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/genreTextView"
+                app:layout_constraintTop_toBottomOf="@+id/genreProfTextView"
                 app:srcCompat="@drawable/bander_logo" />
 
             <TextView
-                android:id="@+id/linksSrchTextView"
+                android:id="@+id/linksProfTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginStart="8dp"
@@ -95,10 +95,10 @@
                 android:text="@string/links"
                 android:textSize="25sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/srchProfileImageView" />
+                app:layout_constraintTop_toBottomOf="@+id/ProfileImageView" />
 
             <TextView
-                android:id="@+id/linkTextView"
+                android:id="@+id/linkProfTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -108,11 +108,11 @@
                 android:textIsSelectable="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linksSrchTextView" />/>
+                app:layout_constraintTop_toBottomOf="@+id/linksProfTextView" />/>
 
 
             <TextView
-                android:id="@+id/bioDisplayTextView"
+                android:id="@+id/bioDisplayProfTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -120,10 +120,10 @@
                 android:text="@string/bio"
                 android:textSize="25sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linkTextView" />
+                app:layout_constraintTop_toBottomOf="@+id/linkProfTextView" />
 
             <TextView
-                android:id="@+id/bioTextView"
+                android:id="@+id/bioProfTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -132,10 +132,10 @@
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bioDisplayTextView" />
+                app:layout_constraintTop_toBottomOf="@+id/bioDisplayProfTextView" />
 
             <TextView
-                android:id="@+id/contactText"
+                android:id="@+id/contactProfText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -143,10 +143,10 @@
                 android:text="Contact"
                 android:textSize="25sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bioTextView" />
+                app:layout_constraintTop_toBottomOf="@+id/bioProfTextView" />
 
             <TextView
-                android:id="@+id/contactTextView"
+                android:id="@+id/contactProfTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -156,7 +156,7 @@
                 android:textIsSelectable="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/contactText" />
+                app:layout_constraintTop_toBottomOf="@+id/contactProfText" />
 
             <Button
                 android:id="@+id/signOutButton"
@@ -168,7 +168,7 @@
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/contactTextView" />
+                app:layout_constraintTop_toBottomOf="@+id/contactProfTextView" />
 
         </android.support.constraint.ConstraintLayout>
     </ScrollView>

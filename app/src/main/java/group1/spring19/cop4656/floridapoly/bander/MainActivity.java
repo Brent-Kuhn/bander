@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private FirebaseUser user;
     private String userId;
-
+    private int position = 0;
     private int notDoneYet = 0;
 
     ProgressDialog pd;
@@ -92,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
                                     selectedFragment = new SearchingFragment();
                                     Bundle bundle = new Bundle();
                                     bundle.putStringArrayList("users", dbUserIds);
+                                    bundle.putInt("position", position);
                                     selectedFragment.setArguments(bundle);
 
                                     break;
@@ -122,8 +123,8 @@ public class MainActivity extends AppCompatActivity {
                 dbUserIds.add(child2.getKey());
             }
         }
-        for(int i = 0; i < dbUserIds.size(); i++)
-        Log.v("Users",dbUserIds.get(i));
+       /* for(int i = 0; i < dbUserIds.size(); i++)
+        Log.v("Users",dbUserIds.get(i));*/
 
         notDoneYet = 1;
 

@@ -8,16 +8,42 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class SearchingFragment extends Fragment {
-    List<String> dbUserIds;
+
+    private Button nextProfile;
+    private Button prevProfile;
+
+    private DatabaseReference mDatabase;
+    private String userId;
+    ArrayList<String> dbUserIds = new ArrayList<>();
+    private int position;
+
+    private TextView mUserBio;
+    private TextView mUserContactInfo;
+    private TextView mUserName;
+    private TextView mInstrument;
+    private TextView mUserType;
+    private TextView mGenre;
+    private ImageView mUserImage;
+    private String image;
+    private TextView mLink;
+
+
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_searching, container, false);
         //list
         //position
         // if position > max listval postion = 0
@@ -25,10 +51,27 @@ public class SearchingFragment extends Fragment {
 
         Bundle bundle = this.getArguments();
         if (bundle != null) {
-            ArrayList<String> userList = bundle.getStringArrayList("users");
-            Log.v("Users", userList.toString());
+            dbUserIds = bundle.getStringArrayList("users");
+            position = bundle.getInt("position");
+            Log.v("Users", dbUserIds.toString());
         }
-        return inflater.inflate(R.layout.fragment_searching,container, false);
+
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+
+        mUserName = (TextView) v.findViewById(R.id.bandNameSrchTextView);
+        mUserType = (TextView) v.findViewById(R.id.ArtistTypeSrchTextView);
+        mInstrument = (TextView) v.findViewById(R.id.InstrumentSrchTextView);
+        mGenre = (TextView) v.findViewById(R.id.GenreSrchTextView);
+        mLink = (TextView) v.findViewById(R.id.linkSrchTextView);
+        mUserBio = (TextView) v.findViewById(R.id.bioSrchTextView);
+        mUserContactInfo = (TextView) v.findViewById(R.id.contactSrchTextView);
+        mUserImage = (ImageView) v.findViewById(R.id.SrchImageView);
+
+        userId = dbUserIds.get(position);
+
+        getData();
+
+        return v;
 
         //onclick next
         //  pass list
@@ -39,5 +82,32 @@ public class SearchingFragment extends Fragment {
         //  pass list
         //  pass position--
         // start SearchingFragment
+    }
+
+    private void getData() {
+        UserInfo uInfo = new UserInfo();
+        uInfo.setUsername(mDatabase.child("users").child(userId).child("username").toString());
+        uInfo.setBio(mDatabase.child("users").child(userId).child("bio").toString());
+        uInfo.setContact(mDatabase.child("users").child(userId).child("contact").toString());
+        uInfo.setGenre(mDatabase.child("users").child(userId).child("genre").toString());
+        uInfo.setInstrument(mDatabase.child("users").child(userId).child("instrument").toString());
+        uInfo.setLink(mDatabase.child("users").child(userId).child("link").toString());
+        uInfo.setType(mDatabase.child("users").child(userId).child("type").toString());
+        uInfo.setImage(mDatabase.child("users").child(userId).child("image").toString());
+
+        mUserName.setText(uInfo.getUsername());
+        mUserType.setText(uInfo.getType());
+        mInstrument.setText(uInfo.getInstrument());
+        mGenre.setText(uInfo.getGenre());
+        mLink.setText(uInfo.getLink());
+        mUserBio.setText(uInfo.getBio());
+        mUserContactInfo.setText(uInfo.getContact());
+        image = uInfo.getImage();
+        try {
+            Glide.with(this).load(image).into(mUserImage);
+
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
     }
 }
