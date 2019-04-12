@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class SearchingFragment extends Fragment {
 
@@ -83,6 +84,27 @@ public class SearchingFragment extends Fragment {
 
             }
         });
+
+
+        nextProfile = (Button) v.findViewById(R.id.nextButton);
+        nextProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vw) {
+                switchNextProfile();
+
+            }
+        });
+
+        prevProfile = (Button) v.findViewById(R.id.previousButton);
+        prevProfile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View vw) {
+                switchPreviousProfile();
+
+            }
+        });
+
+
         return v;
 
         //onclick next
@@ -121,5 +143,33 @@ public class SearchingFragment extends Fragment {
         } catch (NullPointerException e) {
             e.printStackTrace();
         }
+    }
+
+    public void switchNextProfile(){
+        position++;
+        if(position >= dbUserIds.size())
+            position = 0;
+        SearchingFragment selectedFragment = new SearchingFragment();
+        Bundle bundle = new Bundle();
+        bundle.putStringArrayList("users", dbUserIds);
+        bundle.putInt("position", position);
+        selectedFragment.setArguments(bundle);
+
+        Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                selectedFragment).commit();
+    }
+
+    public void switchPreviousProfile(){
+        position--;
+        if(position <= -1)
+            position = dbUserIds.size() - 1;
+        SearchingFragment selectedFragment = new SearchingFragment();
+        Bundle bundle = new Bundle();
+        bundle.putStringArrayList("users", dbUserIds);
+        bundle.putInt("position", position);
+        selectedFragment.setArguments(bundle);
+
+        Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                selectedFragment).commit();
     }
 }
