@@ -13,8 +13,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -69,8 +72,17 @@ public class SearchingFragment extends Fragment {
 
         userId = dbUserIds.get(position);
 
-        getData();
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                getData(dataSnapshot);
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
         return v;
 
         //onclick next
@@ -84,16 +96,16 @@ public class SearchingFragment extends Fragment {
         // start SearchingFragment
     }
 
-    private void getData() {
+    private void getData(DataSnapshot dataSnapshot) {
         UserInfo uInfo = new UserInfo();
-        uInfo.setUsername(mDatabase.child("users").child(userId).child("username").toString());
-        uInfo.setBio(mDatabase.child("users").child(userId).child("bio").toString());
-        uInfo.setContact(mDatabase.child("users").child(userId).child("contact").toString());
-        uInfo.setGenre(mDatabase.child("users").child(userId).child("genre").toString());
-        uInfo.setInstrument(mDatabase.child("users").child(userId).child("instrument").toString());
-        uInfo.setLink(mDatabase.child("users").child(userId).child("link").toString());
-        uInfo.setType(mDatabase.child("users").child(userId).child("type").toString());
-        uInfo.setImage(mDatabase.child("users").child(userId).child("image").toString());
+        uInfo.setUsername(dataSnapshot.child("users").child(userId).child("username").getValue().toString());
+        uInfo.setBio(dataSnapshot.child("users").child(userId).child("bio").getValue().toString());
+        uInfo.setContact(dataSnapshot.child("users").child(userId).child("contact").getValue().toString());
+        uInfo.setGenre(dataSnapshot.child("users").child(userId).child("genre").getValue().toString());
+        uInfo.setInstrument(dataSnapshot.child("users").child(userId).child("instrument").getValue().toString());
+        uInfo.setLink(dataSnapshot.child("users").child(userId).child("link").getValue().toString());
+        uInfo.setType(dataSnapshot.child("users").child(userId).child("type").getValue().toString());
+        uInfo.setImage(dataSnapshot.child("users").child(userId).child("image").getValue().toString());
 
         mUserName.setText(uInfo.getUsername());
         mUserType.setText(uInfo.getType());

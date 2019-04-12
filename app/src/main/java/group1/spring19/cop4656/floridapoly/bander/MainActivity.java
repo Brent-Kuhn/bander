@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private DatabaseReference mDatabase;
     private FirebaseUser user;
     private String userId;
-    private int position = 0;
+    private int position = 10;
     private int notDoneYet = 0;
 
     ProgressDialog pd;
