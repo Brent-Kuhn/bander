@@ -88,7 +88,10 @@ public class MainActivity extends AppCompatActivity {
 
                             //pass list
                             //pass position
+                                        while(dbUserIds == null)
+                                        {
 
+                                        }
                                         selectedFragment = new SearchingFragment();
                                         Bundle bundle = new Bundle();
                                         bundle.putStringArrayList("users", dbUserIds);
