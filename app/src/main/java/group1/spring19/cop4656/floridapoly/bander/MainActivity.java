@@ -2,6 +2,7 @@ package group1.spring19.cop4656.floridapoly.bander;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -20,6 +21,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,7 +35,9 @@ public class MainActivity extends AppCompatActivity {
     private int position = 0;
     private int notDoneYet = 0;
 
-    ProgressDialog pd;
+
+
+    ProgressDialog p;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +48,8 @@ public class MainActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
 
-        pd = new ProgressDialog(this);
-        pd.setMessage("Loading Profiles....");
+        p = new ProgressDialog(this);
+        p.setMessage("Loading Profiles....");
 
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
@@ -66,8 +70,8 @@ public class MainActivity extends AppCompatActivity {
                             selectedFragment = new YourProfileFragment();
                             break;
                         case R.id.nav_searchProfiles:
-                          pd.show();
-
+                            AsyncTaskExample asyncTask=new AsyncTaskExample();
+                            asyncTask.execute("https://www.tutorialspoint.com/images/tp-logo-diamond.png");
                             mDatabase = FirebaseDatabase.getInstance().getReference();
                             StorageReference storageReference = FirebaseStorage.getInstance().getReference();
 
@@ -88,10 +92,6 @@ public class MainActivity extends AppCompatActivity {
 
                             //pass list
                             //pass position
-                                        while(dbUserIds == null)
-                                        {
-
-                                        }
                                         selectedFragment = new SearchingFragment();
                                         Bundle bundle = new Bundle();
                                         bundle.putStringArrayList("users", dbUserIds);
@@ -106,7 +106,6 @@ public class MainActivity extends AppCompatActivity {
                     }
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                             selectedFragment).commit();
-                    pd.dismiss();
                     return true;
                 }
             };
@@ -132,6 +131,49 @@ public class MainActivity extends AppCompatActivity {
         notDoneYet = 1;
 
     }
+
+    private class AsyncTaskExample extends AsyncTask<Void, Void, Void> {
+        @Override
+        protected void onPreExecute() {
+
+            p = new ProgressDialog(MainActivity.this);
+            p.setMessage("Please wait...It is downloading");
+            p.setIndeterminate(false);
+            p.setCancelable(false);
+            p.show();
+        }
+    @Override
+    protected Void doInBackground(Void... arg) {
+        try {
+            mDatabase = FirebaseDatabase.getInstance().getReference();
+            StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+
+            mDatabase.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    getUsers(dataSnapshot);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return
+    }
+    @Override
+    protected void onPostExecute() {
+        if(true) {
+            p.hide();
+
+        }else {
+            p.show();
+        }
+    }
+}
 
 }
 
