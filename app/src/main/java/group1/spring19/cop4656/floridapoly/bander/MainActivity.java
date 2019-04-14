@@ -49,8 +49,6 @@ public class MainActivity extends AppCompatActivity {
     private String userId;
     private int position;
 
-    ProgressDialog pd;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,8 +87,8 @@ public class MainActivity extends AppCompatActivity {
                             break;
                         case R.id.nav_searchProfiles:
 
-                            GetUserList startSearching = new GetUserList();
-                            startSearching.execute();
+                            checkLocationPermission();
+
 
                             break;
 
@@ -112,10 +110,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            checkLocationPermission();
-            pd = new ProgressDialog(MainActivity.this);
-            pd.setMessage("Loading Profiles....");
-            pd.show();
+
         }
 
         @Override
@@ -138,6 +133,8 @@ public class MainActivity extends AppCompatActivity {
             bundle.putStringArrayList("users", dbUserIds);
             bundle.putString("id", userId);
             bundle.putInt("position", position);
+            bundle.putString("long", longitude);
+            bundle.putString("lat", latitude);
 
             return bundle;
         }
@@ -148,7 +145,7 @@ public class MainActivity extends AppCompatActivity {
             Fragment selectedFragment = new SearchingFragment();
             selectedFragment.setArguments(bundle);
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
-            pd.dismiss();
+
         }
     }
 
@@ -209,7 +206,8 @@ public class MainActivity extends AppCompatActivity {
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            new YourProfileFragment()).commit();                }
+                            new YourProfileFragment()).commit();
+                }
                 return;
             }
 
@@ -221,18 +219,27 @@ public class MainActivity extends AppCompatActivity {
     public void getLocation() {
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
 
-        fusedLocationClient.getLastLocation()
-                .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+        fusedLocationClient.getLastLocation().addOnSuccessListener(this, new OnSuccessListener<Location>() {
                     @Override
                     public void onSuccess(Location location) {
                         // Got last known location. In some rare situations this can be null.
                         if (location != null) {
                             longitude = String.valueOf(location.getLongitude());
                             latitude = String.valueOf(location.getLatitude());
-                            Toast.makeText(getApplicationContext(), "Long: " + longitude + " Lat: " + latitude, Toast.LENGTH_LONG).show();
+
+                            setLocations(longitude, latitude);
+                            GetUserList startSearching = new GetUserList();
+                            startSearching.execute();
                         }
                     }
                 });
+    }
+
+    private void setLocations(String uLong, String uLat) {
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference();
+
+        db.child("users").child(userId).child("longitude").setValue(uLong);
+        db.child("users").child(userId).child("latitude").setValue(uLat);
     }
 
 }

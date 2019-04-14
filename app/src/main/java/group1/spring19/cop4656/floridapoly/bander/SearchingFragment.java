@@ -1,6 +1,7 @@
 package group1.spring19.cop4656.floridapoly.bander;
 
 import android.app.ProgressDialog;
+import android.location.Location;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -23,6 +24,9 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import org.w3c.dom.Text;
+
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -45,8 +49,16 @@ public class SearchingFragment extends Fragment {
     private ImageView mUserImage;
     private String image;
     private TextView mLink;
+    private TextView mDistance;
 
-    private String currentUserId;
+    private String latitude;
+    private String longitude;
+    private double searchingLong;
+    private double searchingLat;
+    private double userLong;
+    private double userLat;
+
+    private String searchingUserId;
 
 
     @Nullable
@@ -59,6 +71,10 @@ public class SearchingFragment extends Fragment {
             dbUserIds = bundle.getStringArrayList("users");
             position = bundle.getInt("position");
             userId = bundle.getString("id");
+            latitude = bundle.getString("lat");
+            longitude = bundle.getString("long");
+            userLong = Double.parseDouble(longitude);
+            userLat = Double.parseDouble(latitude);
 
             mDatabase = FirebaseDatabase.getInstance().getReference();
 
@@ -70,8 +86,9 @@ public class SearchingFragment extends Fragment {
             mUserBio = (TextView) v.findViewById(R.id.bioSrchTextView);
             mUserContactInfo = (TextView) v.findViewById(R.id.contactSrchTextView);
             mUserImage = (ImageView) v.findViewById(R.id.SrchImageView);
+            mDistance = (TextView) v.findViewById(R.id.distanceTextView);
 
-            currentUserId = dbUserIds.get(position);
+            searchingUserId = dbUserIds.get(position);
 
             mDatabase.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -114,14 +131,20 @@ public class SearchingFragment extends Fragment {
 
     private void getData(DataSnapshot dataSnapshot) {
         UserInfo uInfo = new UserInfo();
-        uInfo.setUsername(dataSnapshot.child("users").child(currentUserId).child("username").getValue().toString());
-        uInfo.setBio(dataSnapshot.child("users").child(currentUserId).child("bio").getValue().toString());
-        uInfo.setContact(dataSnapshot.child("users").child(currentUserId).child("contact").getValue().toString());
-        uInfo.setGenre(dataSnapshot.child("users").child(currentUserId).child("genre").getValue().toString());
-        uInfo.setInstrument(dataSnapshot.child("users").child(currentUserId).child("instrument").getValue().toString());
-        uInfo.setLink(dataSnapshot.child("users").child(currentUserId).child("link").getValue().toString());
-        uInfo.setType(dataSnapshot.child("users").child(currentUserId).child("type").getValue().toString());
-        uInfo.setImage(dataSnapshot.child("users").child(currentUserId).child("image").getValue().toString());
+        uInfo.setUsername(dataSnapshot.child("users").child(searchingUserId).child("username").getValue().toString());
+        uInfo.setBio(dataSnapshot.child("users").child(searchingUserId).child("bio").getValue().toString());
+        uInfo.setContact(dataSnapshot.child("users").child(searchingUserId).child("contact").getValue().toString());
+        uInfo.setGenre(dataSnapshot.child("users").child(searchingUserId).child("genre").getValue().toString());
+        uInfo.setInstrument(dataSnapshot.child("users").child(searchingUserId).child("instrument").getValue().toString());
+        uInfo.setLink(dataSnapshot.child("users").child(searchingUserId).child("link").getValue().toString());
+        uInfo.setType(dataSnapshot.child("users").child(searchingUserId).child("type").getValue().toString());
+        uInfo.setImage(dataSnapshot.child("users").child(searchingUserId).child("image").getValue().toString());
+        uInfo.setLongitude(dataSnapshot.child("users").child(searchingUserId).child("longitude").getValue().toString());
+        uInfo.setLatitude(dataSnapshot.child("users").child(searchingUserId).child("latitude").getValue().toString());
+
+
+
+        mDistance.setText(String.valueOf(getDistance(uInfo.getLongitude(), uInfo.getLatitude())) + " mi");
 
         mUserName.setText(uInfo.getUsername());
         mUserType.setText(uInfo.getType());
@@ -139,6 +162,24 @@ public class SearchingFragment extends Fragment {
         }
     }
 
+    public double getDistance ( String uLong, String uLat) {
+        searchingLong = Double.valueOf(uLong);
+        searchingLat = Double.valueOf(uLat);
+
+        Location searchingLocation = new Location("Searching Location");
+        searchingLocation.setLatitude(searchingLat);
+        searchingLocation.setLongitude(searchingLong);
+
+        Location userLocation = new Location("User Location");
+        userLocation.setLongitude(userLong);
+        userLocation.setLatitude(userLat);
+
+        DecimalFormat df = new DecimalFormat("#.#");
+
+        double distance = Double.valueOf(df.format((userLocation.distanceTo(searchingLocation) /1609.344)));
+        return distance;
+    }
+
     public void switchNextProfile(){
         position = position + 1;
         if(position >= dbUserIds.size()) {
@@ -148,6 +189,8 @@ public class SearchingFragment extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putStringArrayList("users", dbUserIds);
         bundle.putInt("position", position);
+        bundle.putString("long", longitude);
+        bundle.putString("lat", latitude);
         selectedFragment.setArguments(bundle);
 
         Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
@@ -162,6 +205,8 @@ public class SearchingFragment extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putStringArrayList("users", dbUserIds);
         bundle.putInt("position", position);
+        bundle.putString("long", longitude);
+        bundle.putString("lat", latitude);
         selectedFragment.setArguments(bundle);
 
         Objects.requireNonNull(getActivity()).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();

@@ -10,6 +10,8 @@ public class UserInfo {
     private String type;
     private String username;
     private String image;
+    private String longitude;
+    private String latitude;
 
     public UserInfo(){
 
@@ -86,5 +88,21 @@ public class UserInfo {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(String latitude) {
+        this.latitude = latitude;
     }
 }

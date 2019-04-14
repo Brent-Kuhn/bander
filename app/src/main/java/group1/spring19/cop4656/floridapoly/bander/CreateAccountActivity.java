@@ -43,8 +43,8 @@ public class CreateAccountActivity extends AppCompatActivity {
 
     private FusedLocationProviderClient fusedLocationClient;
     private static final int MY_PERMISSIONS_REQUEST_ACCESS_FINE_LOCATION = 1;
-    private String longitude;
-    private String latitude;
+    private double longitude;
+    private double latitude;
 
     ProgressDialog pd;
 
@@ -239,9 +239,8 @@ public class CreateAccountActivity extends AppCompatActivity {
                     public void onSuccess(Location location) {
                         // Got last known location. In some rare situations this can be null.
                         if (location != null) {
-                            longitude = String.valueOf(location.getLongitude());
-                            latitude = String.valueOf(location.getLatitude());
-                            Toast.makeText(getApplicationContext(), "Long: " + longitude + " Lat: " + latitude, Toast.LENGTH_LONG).show();
+                            longitude = location.getLongitude();
+                            latitude = location.getLatitude();
                         }
                     }
                 });
