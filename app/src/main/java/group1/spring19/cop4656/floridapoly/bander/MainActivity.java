@@ -68,35 +68,19 @@ public class MainActivity extends AppCompatActivity {
                     switch(menuItem.getItemId()){
                         case R.id.nav_yourProfile:
                             selectedFragment = new YourProfileFragment();
+                            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                    selectedFragment).commit();
                             break;
                         case R.id.nav_searchProfiles:
                             AsyncTaskExample asyncTask=new AsyncTaskExample();
-                            asyncTask.execute("https://www.tutorialspoint.com/images/tp-logo-diamond.png");
-                            mDatabase = FirebaseDatabase.getInstance().getReference();
-                            StorageReference storageReference = FirebaseStorage.getInstance().getReference();
-
-                                mDatabase.addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                        getUsers(dataSnapshot);
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                    }
-                                });
+                            asyncTask.execute();
 
                                // for (int i = 0; i < dbUserIds.size(); i++)
                                  //   Log.v("Users", dbUserIds.get(i));
 
                             //pass list
                             //pass position
-                                        selectedFragment = new SearchingFragment();
-                                        Bundle bundle = new Bundle();
-                                        bundle.putStringArrayList("users", dbUserIds);
-                                        bundle.putInt("position", position);
-                                        selectedFragment.setArguments(bundle);
+
 
                                     break;
 
@@ -104,8 +88,7 @@ public class MainActivity extends AppCompatActivity {
 //                            selectedFragment = new MatchesFragment();
 //                           break;
                     }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            selectedFragment).commit();
+
                     return true;
                 }
             };
@@ -115,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void getUsers(DataSnapshot dataSnapshot) {
+    private ArrayList getUsers(DataSnapshot dataSnapshot) {
 
         for(DataSnapshot child : dataSnapshot.getChildren() ){
             // Do magic here
@@ -129,10 +112,10 @@ public class MainActivity extends AppCompatActivity {
         Log.v("Users",dbUserIds.get(i));*/
 
         notDoneYet = 1;
-
+        return dbUserIds;
     }
 
-    private class AsyncTaskExample extends AsyncTask<Void, Void, Void> {
+    private class AsyncTaskExample extends AsyncTask<String, String, ArrayList> {
         @Override
         protected void onPreExecute() {
 
@@ -142,38 +125,48 @@ public class MainActivity extends AppCompatActivity {
             p.setCancelable(false);
             p.show();
         }
-    @Override
-    protected Void doInBackground(Void... arg) {
-        try {
-            mDatabase = FirebaseDatabase.getInstance().getReference();
-            StorageReference storageReference = FirebaseStorage.getInstance().getReference();
-
-            mDatabase.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    getUsers(dataSnapshot);
-                }
-
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
+        @Override
+        protected ArrayList<String> doInBackground(String... arg) {
+            try {
+                dbUserIds = getUsers();
+            } catch (NullPointerException e) {
+                e.printStackTrace();
+            }
+            return dbUserIds;
         }
-        return
-    }
-    @Override
-    protected void onPostExecute() {
-        if(true) {
-            p.hide();
 
-        }else {
-            p.show();
+        protected void onPostExecute(ArrayList<String>... UserIds) {
+            Fragment selectedFragment = null;
+            selectedFragment = new SearchingFragment();
+            Bundle bundle = new Bundle();
+            bundle.putStringArrayList("users", dbUserIds);
+            bundle.putInt("position", position);
+            selectedFragment.setArguments(bundle);
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    selectedFragment).commit();
         }
     }
-}
+
+    public ArrayList<String> getUsers(){
+        mDatabase = FirebaseDatabase.getInstance().getReference();
+        StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                dbUserIds = getUsers(dataSnapshot);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+
+        });
+        return dbUserIds;
+    }
 
 }
+
+
 
