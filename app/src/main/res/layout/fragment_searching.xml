@@ -54,15 +54,40 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/distanceTextView" />
 
+            <TextView
+                android:id="@+id/InstrumentSrchTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:text="Instruments"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ArtistTypeSrchTextView" />
+
+            <TextView
+                android:id="@+id/GenreSrchTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:text="Genre"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/InstrumentSrchTextView" />
+
             <ImageView
-                android:id="@+id/srchProfileImageView"
-                android:layout_width="0dp"
-                android:layout_height="400dp"
-                android:layout_marginTop="32dp"
+                android:id="@+id/SrchImageView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 android:scaleType="center"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ArtistTypeSrchTextView"
+                app:layout_constraintTop_toBottomOf="@+id/GenreSrchTextView"
                 app:srcCompat="@drawable/bander_logo" />
 
 
@@ -71,29 +96,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/links"
                 android:textSize="25sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/srchProfileImageView" />
+                app:layout_constraintTop_toBottomOf="@+id/SrchImageView" />
 
-            <LinearLayout
-                android:id="@+id/linksLinearLayout"
-                android:layout_width="wrap_content"
+            <TextView
+                android:id="@+id/linkSrchTextView"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:orientation="vertical"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linksSrchTextView">
+                app:layout_constraintTop_toBottomOf="@+id/linksSrchTextView" />
 
-                <TextView
-                    android:id="@+id/linkTextView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textSize="15sp" />
-
-            </LinearLayout>
 
             <TextView
                 android:id="@+id/bioSearchingTextView"
@@ -104,7 +124,7 @@
                 android:text="@string/bio"
                 android:textSize="25sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linksLinearLayout" />
+                app:layout_constraintTop_toBottomOf="@+id/linkSrchTextView" />
 
             <TextView
                 android:id="@+id/bioSrchTextView"
@@ -119,7 +139,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/bioSearchingTextView" />
 
             <TextView
-                android:id="@+id/contactText"
+                android:id="@+id/contactSrchText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -130,7 +150,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/bioSrchTextView" />
 
             <TextView
-                android:id="@+id/contactTextView"
+                android:id="@+id/contactSrchTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -139,13 +159,13 @@
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/contactText" />
+                app:layout_constraintTop_toBottomOf="@+id/contactSrchText" />
 
             <android.support.v7.widget.LinearLayoutCompat
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/contactTextView" >
+                app:layout_constraintTop_toBottomOf="@+id/contactSrchTextView" >
 
                 <Button
                     android:id="@+id/previousButton"

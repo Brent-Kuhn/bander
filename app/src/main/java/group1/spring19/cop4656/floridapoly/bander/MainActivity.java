@@ -2,6 +2,7 @@ package group1.spring19.cop4656.floridapoly.bander;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -48,8 +49,7 @@ public class MainActivity extends AppCompatActivity {
         userId = user.getUid();
 
 
-        pd = new ProgressDialog(this);
-        pd.setMessage("Loading Profiles....");
+
 
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
@@ -68,52 +68,74 @@ public class MainActivity extends AppCompatActivity {
                     switch(menuItem.getItemId()){
                         case R.id.nav_yourProfile:
                             selectedFragment = new YourProfileFragment();
+                            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                    selectedFragment).commit();
                             break;
                         case R.id.nav_searchProfiles:
-                          pd.show();
 
-                            mDatabase = FirebaseDatabase.getInstance().getReference();
-                            StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+                            GetUserList startSearching = new GetUserList();
+                            startSearching.execute();
 
-                                mDatabase.addValueEventListener(new ValueEventListener() {
-                                    @Override
-                                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                        getUsers(dataSnapshot);
-                                    }
-
-                                    @Override
-                                    public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                                    }
-                                });
-
-                            //pass list
-                            //pass position
-
-                                    selectedFragment = new SearchingFragment();
-                                    Bundle bundle = new Bundle();
-                                    bundle.putStringArrayList("users", dbUserIds);
-                                    bundle.putString("id", userId);
-                                    bundle.putInt("position", position);
-                                    selectedFragment.setArguments(bundle);
-
-                                    break;
+                            break;
 
 //                        case R.id.nav_matches:
 //                            selectedFragment = new MatchesFragment();
 //                           break;
                     }
-                    getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            selectedFragment).commit();
-                    pd.dismiss();
+
                     return true;
                 }
             };
 
-    public void goToEditFilters() {
-        Intent intent = new Intent(this, FiltersActivity.class);
-        startActivity(intent);
+//    public void goToEditFilters() {
+//        Intent intent = new Intent(this, FiltersActivity.class);
+//        startActivity(intent);
+//    }
+
+    private class GetUserList extends AsyncTask<Void, Void, Bundle> {
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+                super.onPreExecute();
+            pd = new ProgressDialog(MainActivity.this);
+            pd.setMessage("Loading Profiles....");
+            pd.show();
+        }
+
+        @Override
+        protected Bundle doInBackground(Void... voids) {
+            mDatabase = FirebaseDatabase.getInstance().getReference();
+            StorageReference storageReference = FirebaseStorage.getInstance().getReference();
+
+            mDatabase.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    getUsers(dataSnapshot);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+
+                }
+            });
+            Bundle bundle = new Bundle();
+            bundle.putStringArrayList("users", dbUserIds);
+            bundle.putString("id", userId);
+            bundle.putInt("position", position);
+
+            return bundle;
+        }
+
+        @Override
+        protected void onPostExecute(Bundle bundle) {
+            super.onPostExecute(bundle);
+            Fragment selectedFragment = new SearchingFragment();
+            selectedFragment.setArguments(bundle);
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, selectedFragment).commit();
+            pd.dismiss();
+        }
     }
+
 
     private void getUsers(DataSnapshot dataSnapshot) {
 
@@ -123,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
                 dbUserIds.add(child2.getKey());
             }
         }
+        dbUserIds.remove(userId);
 
     }
 
