@@ -126,16 +126,17 @@ public class MainActivity extends AppCompatActivity {
             p.show();
         }
         @Override
-        protected ArrayList<String> doInBackground(String... arg) {
+        protected ArrayList doInBackground(String... arg) {
+            ArrayList userList = new ArrayList<>();
             try {
-                dbUserIds = getUsers();
+                userList = getUsers();
             } catch (NullPointerException e) {
                 e.printStackTrace();
             }
-            return dbUserIds;
+            return userList;
         }
-
-        protected void onPostExecute(ArrayList<String>... UserIds) {
+        protected void onPostExecute(ArrayList uselessList) {
+            p.dismiss();
             Fragment selectedFragment = null;
             selectedFragment = new SearchingFragment();
             Bundle bundle = new Bundle();
@@ -147,7 +148,8 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public ArrayList<String> getUsers(){
+    public ArrayList getUsers(){
+        ArrayList userList = new ArrayList<>();
         mDatabase = FirebaseDatabase.getInstance().getReference();
         StorageReference storageReference = FirebaseStorage.getInstance().getReference();
 
@@ -161,9 +163,9 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-
         });
-        return dbUserIds;
+        userList = dbUserIds;
+        return userList;
     }
 
 }
