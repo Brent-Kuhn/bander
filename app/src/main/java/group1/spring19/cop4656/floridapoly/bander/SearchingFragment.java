@@ -88,6 +88,8 @@ public class SearchingFragment extends Fragment {
             mUserImage = (ImageView) v.findViewById(R.id.SrchImageView);
             mDistance = (TextView) v.findViewById(R.id.distanceTextView);
 
+            Log.v("UserList", dbUserIds.toString());
+
             searchingUserId = dbUserIds.get(position);
 
             mDatabase.addValueEventListener(new ValueEventListener() {

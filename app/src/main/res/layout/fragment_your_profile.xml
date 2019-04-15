@@ -23,8 +23,7 @@
                 style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginTop="4dp"
                 android:text="@string/editProfile"
                 android:textColor="@color/colorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -35,55 +34,61 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="10dp"
                 android:text="Band Name/Artist Name"
                 android:textSize="25sp"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/editProfileButton" />
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <TextView
-                android:id="@+id/ArtistTypeSrchTextView"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:id="@+id/linearInfo"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
-                android:text="Rock Band/Guitarist/Electronic Producer"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bandNameSrchTextView" />
+                app:layout_constraintTop_toBottomOf="@+id/bandNameSrchTextView">
 
-            <TextView
-                android:id="@+id/InstrumentTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
-                android:text="Instrument"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ArtistTypeSrchTextView" />
+                <TextView
+                    android:id="@+id/ArtistTypeSrchTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Rock Band/Guitarist/Electronic Producer"
+                    android:layout_weight=".33"
+                    android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/genreTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="24dp"
-                android:layout_marginTop="8dp"
-                android:text="Genre"
-                android:textSize="20sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/InstrumentTextView" />
+                <TextView
+                    android:id="@+id/genreTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Genre"
+                    android:layout_weight=".33"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/InstrumentTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:text="Instrument"
+                    android:layout_weight=".33"
+                    android:textSize="20sp" />
+
+
+            </LinearLayout>
 
             <ImageView
                 android:id="@+id/srchProfileImageView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="16dp"
                 android:scaleType="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/genreTextView"
+                app:layout_constraintTop_toBottomOf="@+id/linearInfo"
                 app:srcCompat="@drawable/bander_logo" />
 
             <TextView
@@ -91,7 +96,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="32dp"
+                android:layout_marginTop="16dp"
                 android:text="@string/links"
                 android:textSize="25sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -108,7 +113,7 @@
                 android:textIsSelectable="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/linksSrchTextView" />/>
+                app:layout_constraintTop_toBottomOf="@+id/linksSrchTextView" />
 
 
             <TextView
