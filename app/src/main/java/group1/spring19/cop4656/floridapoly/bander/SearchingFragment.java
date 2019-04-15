@@ -146,7 +146,7 @@ public class SearchingFragment extends Fragment {
 
 
 
-        mDistance.setText(String.valueOf(getDistance(uInfo.getLongitude(), uInfo.getLatitude())) + " mi");
+        mDistance.setText(String.valueOf(getDistance(uInfo.getLongitude(), uInfo.getLatitude())) + " mi away");
 
         mUserName.setText(uInfo.getUsername());
         mUserType.setText(uInfo.getType());
